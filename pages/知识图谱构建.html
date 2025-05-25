@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>企业知识图谱构建与应用</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #fff;
+      padding: 2rem 1rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .logo {
+      height: 60px;
+    }
+    h1 {
+      font-size: 2rem;
+      margin: 0.5rem 0 0;
+    }
+    .section {
+      padding: 3rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      color: #0f172a;
+    }
+    .section-icon {
+      width: 1.75rem;
+      height: 1.75rem;
+      object-fit: contain;
+      border-radius: 0.25rem;
+    }
+    .flow-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2rem;
+      gap: 1rem;
+    }
+    .flow-step {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+      min-width: 160px;
+      max-width: 200px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+    .flow-step h3 {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      color: #333;
+    }
+    .flow-step p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .flow-arrow {
+      font-size: 2rem;
+      color: #888;
+      user-select: none;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .info-card {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 1rem;
+      padding: 1.2rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+      transition: transform 0.2s ease;
+    }
+    .info-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    }
+    .info-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+    .info-card p {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.4;
+    }
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .image-block {
+      flex: 1 1 calc(50% - 1rem);
+      text-align: center;
+    }
+    .image-block img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 0.5rem;
+    }
+    .image-block p {
+      font-size: 0.95rem;
+      color: #444;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #f1f5f9;
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <img src="../assets/output.lin.png" alt="Whaleflux Logo" class="logo" />
+      <div>
+        <h1>企业知识图谱构建与应用</h1>
+        <p>探索结构化知识如何驱动智能化决策与问答系统</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 一、知识图谱定义 -->
+    <section class="section">
+      <h2 class="section-title">
+        <img src="../assets/icon02.jpg" alt="能力模块图标" class="section-icon">
+        什么是知识图谱？
+      </h2>
+      <p style="color: #000;">
+        在 AI 时代，传统的文档式知识库已难以满足企业快速决策与智能问答的需求。知识图谱通过实体、属性与关系的结构化表示，
+        使企业能高效整合信息、理解语义、驱动智能 Agent，成为构建企业级 AI 系统的关键支撑。
+      </p>
+      <img src="../assets/知识图谱预览页.jpg" alt="知识图谱示意图" style="margin: 2rem auto; display: block; max-width: 100%; border-radius: 1rem;">
+    </section>
+
+    <!-- 二、构建流程图 -->
+    <section class="section">
+      <h2 class="section-title">
+        <img src="../assets/icon01.jpg" alt="构建流程图标" class="section-icon">
+        我们的构建流程
+      </h2>
+      <div class="flow-container">
+        <div class="flow-step">
+          <h3>数据采集与清洗</h3>
+          <p>整合结构化与非结构化数据源</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <h3>实体识别与关系抽取</h3>
+          <p>从文本中挖掘关键实体及其关系</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <h3>关系对齐</h3>
+          <p>语义规范化与命名统一</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <h3>图数据库构建</h3>
+          <p>以 Neo4j 为代表的结构存储</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <h3>可视化与分析</h3>
+          <p>图谱结构清晰展示，分析关系</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <h3>语义问答</h3>
+          <p>结合大模型实现智能问答</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 三、实际图示与案例 -->
+    <section class="section">
+      <h2 class="section-title">
+        <img src="../assets/icon03.jpg" alt="效果图标" class="section-icon">
+        实际演示效果
+      </h2>
+      <p style="color: #000;">
+        我们已在多个项目中构建数千级实体与关系的知识图谱，可进行关键词查询、上下游推理、图谱导航与语义问答等操作。
+      </p>
+      <div class="image-grid">
+        <div class="image-block">
+          <img src="../assets/数据协同平台/数据标注/WechatIMG2873.jpg" alt="图示1">
+          <p>某央企飞行器图纸构建实体结构与属性标注</p>
+        </div>
+        <div class="image-block">
+          <img src="../assets/数据协同平台/数据标注/WechatIMG2883.jpg" alt="图示2">
+          <p>不同模态数据统一建图，支撑智能推理问答</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 四、技术优势 -->
+    <section class="section">
+      <h2 class="section-title">
+        <img src="../assets/icon02.jpg" alt="优势图标" class="section-icon">
+        我们的技术优势
+      </h2>
+      <div class="grid-container">
+        <div class="info-card">
+          <h3>中文大模型适配</h3>
+          <p>自主适配各行业数据、模型泛化能力强</p>
+        </div>
+        <div class="info-card">
+          <h3>主流图数据库支持</h3>
+          <p>支持 Neo4j、ArangoDB、OrientDB 等</p>
+        </div>
+        <div class="info-card">
+          <h3>知识图谱构建+补全</h3>
+          <p>完整支持实体抽取、知识融合与知识生成</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 五、应用场景 -->
+    <section class="section">
+      <h2 class="section-title">
+        <img src="../assets/icon03.jpg" alt="场景图标" class="section-icon">
+        企业应用场景
+      </h2>
+      <div class="grid-container">
+        <div class="info-card">
+          <h3>内部知识检索系统</h3>
+          <p>构建高效企业知识搜索引擎</p>
+        </div>
+        <div class="info-card">
+          <h3>专家辅助决策系统</h3>
+          <p>多维信息聚合支撑复杂分析</p>
+        </div>
+        <div class="info-card">
+          <h3>RAG 问答系统</h3>
+          <p>构建私域知识与大模型融合智能问答</p>
+        </div>
+        <div class="info-card">
+          <h3>自动文档归档</h3>
+          <p>实现非结构化信息自动结构化落库</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Emerging AI</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>多模态数据处理能力展示</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <img src="../assets/output.lin.png" alt="Whaleflux Logo" class="logo">
+      <div>
+        <h1>多模态数据处理能力展示</h1>
+        <p>融合文本、图像、语音、视频等数据，实现更智能的语义理解与任务驱动</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <h2 class="section-title">
+        <img src="../assets/icon02.jpg" alt="模块图标" class="section-icon">
+        什么是多模态数据处理？
+      </h2>
+      <p style="color: #000;">
+        多模态数据处理是指对企业中大量非结构化的数据（文本、语音、图像、视频等）进行统一理解和分析，打破信息孤岛，实现跨模态的语义融合、知识提取和任务自动化。
+        它是构建智能决策系统、训练AI Agent、实现语义驱动任务执行的基础能力。      
+      </p>
+      <img src="../assets/多模态数据处理预览页.jpg" alt="多模态示意图" style="margin: 2rem auto; display: block; max-width: 100%; border-radius: 1rem;">
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">
+          <img src="../assets/icon01.jpg" alt="流程图标" class="section-icon">
+          我们的处理流程
+        </h2>
+      
+        <div class="flow-container">
+          <div class="flow-step">
+            <h3>数据接入</h3>
+            <p>支持图像、语音、视频、PDF、表格等多种格式。</p>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <h3>内容识别</h3>
+            <p>图像识别、ASR语音识别、OCR文字提取等。</p>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <h3>语义解析</h3>
+            <p>调用大模型完成事件识别、关键词提取、情感分析。</p>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <h3>结构化建模</h3>
+            <p>将内容转换为知识单元、实体、属性等结构。</p>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <h3>统一表示</h3>
+            <p>向量化处理，实现模态对齐与语义融合。</p>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <h3>对接Agent</h3>
+            <p>通过标准接口调用，支撑自动化任务链路。</p>
+          </div>
+        </div>
+      
+        <style>
+          .flow-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 1rem;
+          }
+      
+          .flow-step {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            min-width: 160px;
+            max-width: 200px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+          }
+      
+          .flow-step h3 {
+            margin: 0.5rem 0;
+            font-size: 1rem;
+            color: #333;
+          }
+      
+          .flow-step p {
+            font-size: 0.9rem;
+            color: #555;
+          }
+      
+          .flow-arrow {
+            font-size: 2rem;
+            color: #888;
+            user-select: none;
+          }
+      
+          @media (max-width: 768px) {
+            .flow-container {
+              flex-direction: column;
+              align-items: flex-start;
+            }
+            .flow-arrow {
+              transform: rotate(90deg);
+            }
+          }
+        </style>
+      </section>
+      
+
+    <!-- “实际演示效果”部分 -->
+    <section class="section">
+        <h2 class="section-title">
+          <img src="../assets/icon03.jpg" alt="效果图标" class="section-icon">
+          客户案例一：中航工业设备制造数据集构建
+        </h2>
+        <p style="margin-top: 1rem; font-size: 0.95rem; color: #000;">
+            在本项目中，我们不仅完成了对复杂工业图纸的图像增强、边缘检测与矢量化重建，还通过融合OCR和图像区域语义理解，实现了高精度的结构识别和属性标注。
+            标注结果可自动导出为结构化JSON，用于下游的大模型问答训练、设备知识图谱构建与可视化分析，是典型的“从非结构化到结构化”的自动管线能力展示。
+
+          </p>
+          
+      
+        <div class="image-grid">
+          <div class="image-block">
+            <img src="../assets/多模态数据处理/数据标注/中航标注1.jpg" alt="中航图1">
+            <p>通过图像增强与边缘检测算法，对复杂图纸中的结构线条与符号进行高精度分割与矢量化处理。</p>
+          </div>
+          <div class="image-block">
+            <img src="../assets/多模态数据处理/数据标注/中航标注2.jpg" alt="中航图2">
+            <p>融合 OCR 与语义分块算法，实现图文混排场景下的区域级多模态信息抽取与属性标注。</p>
+          </div>
+          <div class="image-block">
+            <img src="../assets/多模态数据处理/数据标注/中航标注4.jpg" alt="中航图4">
+            <p>基于图神经网络与相似度计算，自动将图像区域内容与元数据进行语义对齐并生成知识对。</p>
+          </div>
+          <div class="image-block">
+            <img src="../assets/多模态数据处理/数据标注/中航标注5.jpg" alt="中航图5">
+            <p>支持标注结果一键导出为结构化 JSON，实现图像知识的自动结构化与知识图谱入库准备。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">
+          <img src="../assets/icon03.jpg" alt="文档图标" class="section-icon">
+          客户案例二：招商局集团多模态PDF智能解析
+        </h2>
+        <p style="color: #000;">
+          我们基于自研多模态解析引擎，为大型制造业、央企集团等客户提供了对复杂PDF文件的结构化处理能力。系统可自动识别图示、表格、公式、思维导图等内容，转化为可供大模型处理的标准格式。
+        </p>
+      
+        <div class="pdf-grid">
+          <div class="info-card">
+            <h3 style="text-align: center;">架构图识别样例</h3>
+            <img src="../assets/多模态数据处理/数据标注/架构图.png" alt="架构图" class="pdf-image">
+            <pre class="text-panel" style="white-space: pre-wrap;">
+      # 私有化千帆大模型平台——全功能标准版整体架构
+      
+      企业级大模型服务平台，预置百度文心大模型和领先的第三方大模型，提供全流程服务能力。
+
+      ## 核心功能
+      - 数据管理：清洗、生成、标注、回流
+      - 模型训练：SFT、RLHF、分布式训练
+      - 评估优化：模型仓库、评估、压缩
+      - 预测部署：服务管理、预置服务、应用接入
+      - Prompt工程：模板管理与调用
+      - 插件应用：管理、编排、构建
+
+      ## 基础支撑
+      - 用户与资源管理
+      - 运维与系统管理
+      - 安全干预与统计
+      - AI基础设施支持
+            </pre>
+          </div>
+      
+          <div class="info-card">
+            <h3 style="text-align: center;">思维导图结构解析</h3>
+            <img src="../assets/多模态数据处理/数据标注/类思维导图.png" alt="思维导图" class="pdf-image">
+            <pre class="text-panel" style="white-space: pre-wrap;">
+      ## 招商局集团知识语料管理体系
+      
+      ### 核心知识库
+      - 招商蛇口研究报告库
+      - 蛇口智慧港产品知识库
+      - 招商轮船专业法规知识库
+      - 招商局集团知识总库
+
+      ### 管理功能
+      - 租户管理
+      - 多级知识库管理
+      - 知识库资源配置
+      - 用户&权限管理
+
+      ### 建设目标
+      建设集团知识语料体系，沉淀覆盖各板块全域行业知识
+            </pre>
+          </div>
+      
+          <div class="info-card">
+            <h3 style="text-align: center;">图表评测内容还原</h3>
+            <img src="../assets/多模态数据处理/数据标注/雷达图.png" alt="雷达图" class="pdf-image">
+            <pre class="text-panel" style="white-space: pre-wrap;">
+      ## 数据质量评估指标体系
+      
+      ### 核心指标
+      - 标签一致性：概念一致性
+      - 稠密性：内容信息量
+      - 多样性：特征与来源多样性
+      - 均衡性：类别与来源均衡
+      - 相关性：领域相关性
+      - 原创性：来源原创性
+      - 可溯性：来源与链路可溯
+      - 可访问性：获取与使用难易
+      - 技术支持性：版本控制与支持
+
+      ### 评分结果
+      完整性：100% | 规范性：100%
+      准确性：98%  | 及时性：98%
+      一致性：97%  | 稠密性：96%
+      多样性：90%  | 均衡性：95%
+            </pre>
+          </div>
+      
+          <div class="info-card">
+            <h3 style="text-align: center;">不规则布局文本重构</h3>
+            <img src="../assets/多模态数据处理/数据标注/上下列不对齐.png" alt="不规则布局" class="pdf-image">
+            <pre class="text-panel" style="white-space: pre-wrap;">
+      ## 2022年12月三大航运营数据
+      
+      ### 环比增长
+      - 国航：ASK +38.1%，客运量 +35.3%
+      - 东航：ASK +30.7%，客运量 +35.6%
+      - 南航：ASK +51.8%，客运量 +49.7%
+
+      ### 同比变化
+      - 国航：ASK -22.1%，客运量 -30.3%
+      - 东航：ASK -33.5%，客运量 -34.2%
+      - 南航：ASK -25.0%，客运量 -20.8%
+
+      ### 客座率
+      国航：61.9% | 东航：63.3% | 南航：66.5%
+            </pre>
+          </div>
+
+          <div class="info-card">
+            <h3 style="text-align: center;">表格数据提取</h3>
+            <img src="../assets/多模态数据处理/数据标注/复杂表格.png" alt="表格数据" class="pdf-image">
+            <pre class="text-panel" style="white-space: pre-wrap;">
+      ## HMM Sustainability Report
+
+      ### Contact
+      Market Intelligence Team
+      Tel: 02-3706-5887
+      E-mail: y.ryoo@hmm21.com
+
+      ### Vision
+      "We carry the future" - HMM's commitment to sustainable values through global presence.
+
+      ### Contents
+      - CEO & Management Message
+      - Company Overview & Value Chain
+      - Special Focus: Climate, Shipping, COVID-19
+      - Sustainability: Environment, Society, Governance
+            </pre>
+          </div>
+
+          <div class="info-card">
+            <h3 style="text-align: center;">公式识别转换</h3>
+            <img src="../assets/多模态数据处理/数据标注/公示提取.png" alt="公式识别" class="pdf-image">
+            <pre class="text-panel" style="white-space: pre-wrap;">
+      ## k近邻模型距离度量
+
+      ### 距离公式
+      - 欧氏距离 (p=2)：
+        L₂(xᵢ,xⱼ) = √(∑|xᵢ⁽ˡ⁾ - xⱼ⁽ˡ⁾|²)
+      
+      - 曼哈顿距离 (p=1)：
+        L₁(xᵢ,xⱼ) = ∑|xᵢ⁽ˡ⁾ - xⱼ⁽ˡ⁾|
+      
+      - 切比雪夫距离 (p=∞)：
+        L∞(xᵢ,xⱼ) = max|xᵢ⁽ˡ⁾ - xⱼ⁽ˡ⁾|
+
+      ### 特征空间
+      - p ≥ 1 时的距离度量
+      - 三维空间中不同p值对应的距离关系
+      - 距离为1的点的分布特征
+            </pre>
+          </div>
+
+          <div class="info-card">
+            <h3 style="text-align: center;">流程图解析</h3>
+            <img src="../assets/多模态数据处理/数据标注/流程图.png" alt="流程图" class="pdf-image">
+            <pre class="text-panel" style="white-space: pre-wrap;">
+      ## 吉利汽车ESG管理架构
+      
+      ### 组织架构
+      - 董事会
+        • 审查重大ESG事项及应对方案
+        • 讨论并决策委员会建议
+      
+      - 可持续发展委员会
+        • 检讨政策与风险机制
+        • 督促战略执行与改进
+      
+      - ESG联合工作组
+        • 推进信息透明与参与
+        • 开展影响分析与改进
+      
+      - ESG相关部门
+        • 制定目标与落实措施
+        • 编制落实情况与改进计划
+
+      ### 治理披露
+      - 产品安全评级
+        • 中国地区：88.9%
+        • 欧洲地区：<50%
+      - 安全缺陷投诉：100%通报
+      - 召回车辆：0辆
+
+      ### 管理体系
+      - 风险管理与内部控制
+      - 合规管理与制度体系
+      - 信息安全与隐私保护
+      - 培训演练与外部认证
+            </pre>
+          </div>
+
+          <div class="info-card">
+            <h3 style="text-align: center;">多栏布局处理</h3>
+            <img src="../assets/多模态数据处理/数据标注/网页内容.png" alt="多栏布局" class="pdf-image">
+            <pre class="text-panel" style="white-space: pre-wrap;">
+      ## 正德海運 2023 永續報告書
+
+      ### 公司概況
+      - 從船務代理轉型為船舶租賃與買賣業務
+      - 營運航線遍及全球
+      - 2023年底船隊規模：18艘船舶
+      - 總載重噸：67.829萬噸
+
+      ### 船隊構成
+      | 船型 | 艘數 | 航線 | 載重噸 |
+      |------|------|------|---------|
+      | Newcastlemax | 1 | 環球 | 176,955 |
+      | Supramax | 2 | 環球 | 106,855 |
+      | Handy Size | 6 | 遠東印度 | 254,074 |
+      | Multi purpose | 6 | 環球 | 105,179 |
+      | General Cargo | 3 | 遠東印度 | 35,336 |
+
+      ### 業務發展
+      - 2023年完成4艘新造船舶交付
+      - 2024年預計完成2艘新船建造
+      - 鎖定長期租船合約
+      - 維持穩定獲利與環保目標
+            </pre>
+          </div>
+
+          <div class="info-card">
+            <h3 style="text-align: center;">水印文件处理</h3>
+            <img src="../assets/多模态数据处理/数据标注/水印测试.png" alt="水印文件" class="pdf-image">
+            <pre class="text-panel" style="white-space: pre-wrap;">
+      ## GB/T 10001 公共信息图形符号
+
+      ### 标准体系
+      - GB/T 10001《公共信息图形符号》
+      - GB/T 20501《公共信息导向系统》
+      - GB/T 15566《公共信息导向系统》
+
+      ### 主要变更
+      - 新增图形符号：18个
+        • 自动售票机、家庭卫生间等
+      - 更新图形符号：33个
+        • 厕所、出入口、电梯等
+      - 删除图形符号：25个
+        • 移至其他部分或删除
+
+      ### 标准信息
+      - 起草单位：中国标准化研究院等
+      - 归口单位：全国图形符号标准化技术委员会
+      - 参考标准：ISO 7001:2023
+            </pre>
+          </div>
+        </div>
+
+        <div class="bracket-container">
+          <div class="bracket">
+            <div class="bracket-line"></div>
+            <div class="bracket-arrow"></div>
+          </div>
+        </div>
+
+        <div class="knowledge-base-container">
+          <div class="info-card knowledge-base">
+            <h3 style="text-align: center;">招商局集团某部门知识库</h3>
+            <div class="knowledge-content">
+              <p>通过多模态数据处理引擎，我们将上述各类文档进行了统一处理：</p>
+              <ul>
+                <li>对架构图、思维导图等图形内容进行结构化解析</li>
+                <li>提取表格数据并建立关联关系</li>
+                <li>识别并转换数学公式为可计算格式</li>
+                <li>解析业务流程并构建知识图谱</li>
+                <li>处理多栏布局文档，保持语义连贯性</li>
+              </ul>
+              <p>最终构建了一个完整的知识库，支持：</p>
+              <ul>
+                <li>跨文档知识检索与问答</li>
+                <li>业务流程自动化执行</li>
+                <li>数据可视化与分析</li>
+                <li>智能决策支持</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">
+          <img src="../assets/icon03.jpg" alt="图示图标" class="section-icon">
+          客户案例三：某科研单位多模态数据标注
+        </h2>
+        <p style="margin-top: 1rem; font-size: 0.95rem; color: #000;">
+            我们的数据标注引擎支持图像目标检测、多类标签边界框标注、跨模态语义融合，并具备高准确率的人审质控流程。
+            本项目应用于科研模型训练阶段，通过智能辅助标注工具大幅提升了标注效率与一致性，并输出标准格式的数据集，支持后续模型评估与部署。
+        </p>          
+        <div class="image-grid">
+          <div class="image-block">
+            <img src="../assets/多模态数据处理/数据标注/train_batch14320.jpg" alt="图像识别示例" />
+            <p>图像目标检测示例：展示了模型对不同物体的识别边框与标签标注。</p>
+          </div>
+          <div class="image-block">
+            <img src="../assets/多模态数据处理/数据标注/train_batch14321.jpg" alt="多目标识别" />
+            <p>多目标标注：复杂场景下识别多类目标，适用于工业现场、安防等场景。</p>
+          </div>
+          <div class="image-block">
+            <img src="../assets/多模态数据处理/数据标注/train_batch14322.jpg" alt="图像模态融合" />
+            <p>图像模态融合分析：支持对场景进行结构化解读与后续语义处理。</p>
+          </div>
+          <div class="image-block">
+            <img src="../assets/多模态数据处理/数据标注/val_batch0_labels.jpg" alt="验证集标注图" />
+            <p>验证集样本可视化：用于评估模型训练精度与标注一致性。</p>
+          </div>
+        </div>
+      </section>
+
+      <style>
+        .pdf-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2rem;
+          margin: 2rem 0;
+          row-gap: 3rem;
+        }
+
+        .bracket-container {
+          display: flex;
+          justify-content: center;
+          margin: 2rem 0;
+          position: relative;
+        }
+
+        .bracket {
+          position: relative;
+          width: 200px;
+          height: 60px;
+        }
+
+        .bracket-line {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 4px;
+          height: 40px;
+          background-color: #666;
+        }
+
+        .bracket-arrow {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 0;
+          height: 0;
+          border-left: 12px solid transparent;
+          border-right: 12px solid transparent;
+          border-top: 16px solid #666;
+          margin-top: -1px;
+        }
+
+        .knowledge-base-container {
+          display: flex;
+          justify-content: center;
+          margin-top: 1rem;
+        }
+
+        .pdf-grid .info-card {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          min-height: 420px;
+          background: #fff;
+          border: 1px solid #eee;
+          border-radius: 12px;
+          padding: 1.2rem;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .pdf-grid .info-card.knowledge-base {
+          width: 50%;
+          min-height: auto;
+          background: #f8f9fa;
+          border: 2px solid #e9ecef;
+        }
+
+        .knowledge-content {
+          padding: 1rem;
+          background: #fff;
+          border-radius: 8px;
+          margin-top: 1rem;
+        }
+
+        .knowledge-content ul {
+          margin: 0.5rem 0;
+          padding-left: 1.5rem;
+        }
+
+        .knowledge-content li {
+          margin: 0.3rem 0;
+          color: #495057;
+        }
+
+        .knowledge-content p {
+          margin: 0.8rem 0;
+          color: #212529;
+        }
+
+        .pdf-grid .info-card h3 {
+          margin-bottom: 0.8rem;
+          font-size: 1.1rem;
+          color: #2c3e50;
+        }
+
+        .pdf-image {
+          width: 100%;
+          height: 180px;
+          object-fit: cover;
+          border-radius: 8px;
+          margin-bottom: 1rem;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .pdf-grid .text-panel {
+          flex: 1;
+          margin-top: 0.8rem;
+          font-size: 0.9rem;
+          background: #f8f9fa;
+          padding: 1rem;
+          border-radius: 8px;
+          border: 1px solid #eee;
+        }
+
+        @media (max-width: 1200px) {
+          .pdf-grid {
+            grid-template-columns: repeat(2, 1fr);
+            row-gap: 2.5rem;
+          }
+          .pdf-grid .info-card.knowledge-base {
+            width: 70%;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .pdf-grid {
+            grid-template-columns: 1fr;
+            row-gap: 2rem;
+          }
+          .pdf-grid .info-card.knowledge-base {
+            width: 90%;
+          }
+        }
+      </style>
+
+    <!-- 技术优势 -->
+    <section class="section" style="margin-top: 2rem;">
+      <h2 class="section-title">
+        <img src="../assets/icon02.jpg" alt="优势图标" class="section-icon">
+        我们的技术优势
+      </h2>
+      <div class="grid-container">
+        <div class="info-card">
+          <h3>全模态数据适配能力</h3>
+          <p>支持图像、语音、文本、视频等多源数据统一解析与结构建模。</p>
+        </div>
+        <div class="info-card">
+          <h3>多模型协同融合</h3>
+          <p>集成 OCR、ASR、视觉识别与 LLM，完成复杂多模态任务处理。</p>
+        </div>
+        <div class="info-card">
+          <h3>行业语义定制能力</h3>
+          <p>具备特定行业术语和上下文理解能力，精准构建知识表达。</p>
+        </div>
+        <div class="info-card">
+          <h3>系统集成与落地能力</h3>
+          <p>支持对接企业内部平台，结合调度/工单/知识库实现任务触发。</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 企业应用场景 -->
+    <section class="section">
+      <h2 class="section-title">
+        <img src="../assets/icon03.jpg" alt="场景图标" class="section-icon">
+        企业应用场景
+      </h2>
+      <div class="grid-container">
+        <div class="info-card">
+          <h3>会议纪要与视频分析</h3>
+          <p>自动转写、摘要与议题分类，加速知识沉淀与回溯检索。</p>
+        </div>
+        <div class="info-card">
+          <h3>档案数字化与分类归档</h3>
+          <p>图文内容识别与元数据结构化，提升资料归档效率。</p>
+        </div>
+        <div class="info-card">
+          <h3>客服语音质检与总结</h3>
+          <p>语音识别+情感分析，支持客服对话总结与舆情预警。</p>
+        </div>
+        <div class="info-card">
+          <h3>智能问答与任务触发</h3>
+          <p>构建企业私域知识+RAG+Agent，支撑自动响应与任务驱动。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Emerging AI</p>
+  </footer>
+
+  <style>
+    .image-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .image-block {
+      flex: 1 1 calc(50% - 1rem);
+      text-align: center;
+    }
+
+    .image-block img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .image-block p {
+      font-size: 0.95rem;
+      color: #444;
+    }
+  </style>
+
+  <!-- 样式补充 -->
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+  
+    .info-card {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 1rem;
+      padding: 1.2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+      transition: transform 0.2s ease;
+    }
+  
+    .info-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+  
+    .info-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+  
+    .info-card p {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.4;
+    }
+  </style>
+  
+</body>
+</html>

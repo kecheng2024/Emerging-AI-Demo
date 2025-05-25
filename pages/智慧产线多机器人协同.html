@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <title>机器人系统可观测仪表盘</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      margin: 0;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.6rem;
+    }
+
+    .section {
+      padding: 2rem;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 0.5rem;
+    }
+
+    .chart-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .chart-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .chart-box {
+      width: 100%;
+      height: 280px;
+    }
+
+    .status-indicator {
+      width: 100%;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: #fff;
+      border-radius: 8px;
+      background-color: #28a745;
+    }
+
+    .tool-panel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .tool-card {
+      background: #fdfdfd;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+    }
+
+    .threshold-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.5rem;
+    }
+
+    .threshold-table th,
+    .threshold-table td {
+      border: 1px solid #ccc;
+      padding: 0.4rem;
+      text-align: center;
+    }
+
+    .text-panel {
+      background: #f4f4f4;
+      padding: 1rem;
+      border-radius: 6px;
+      white-space: pre-wrap;
+      font-size: 0.95rem;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>机器人系统可观测仪表盘</h1>
+  </header>
+
+  <main>
+    <!-- Section 示例（以算力资源为例）-->
+    <section class="section">
+        <h2 class="section-title">
+          <img src="../assets/icon01.jpg" alt="机器人本体图标" class="section-icon">
+          机器人本体数据监控
+        </h2>
+      
+        <div class="chart-grid">
+          <!-- 摄像头帧率 -->
+          <div class="chart-card">
+            <h3>摄像头帧率 (FPS)</h3>
+            <div id="cameraFPS" class="chart-box"></div>
+          </div>
+      
+          <!-- 花屏检测 -->
+          <div class="chart-card">
+            <h3>花屏检测</h3>
+            <div id="screenError" class="status-indicator"></div>
+          </div>
+      
+          <!-- 关节压力 -->
+          <div class="chart-card">
+            <h3>关节压力</h3>
+            <div id="jointPressure" class="chart-box"></div>
+          </div>
+      
+          <!-- 姿态角 IMU -->
+          <div class="chart-card">
+            <h3>IMU 动态姿态</h3>
+            <div id="imuPose" class="chart-box"></div>
+          </div>
+      
+          <!-- 电流电压 -->
+          <div class="chart-card">
+            <h3>电流与电压</h3>
+            <div id="currentVoltage" class="chart-box"></div>
+          </div>
+      
+          <!-- 电机温度 -->
+          <div class="chart-card">
+            <h3>电机温度</h3>
+            <div id="motorTemp" class="chart-box"></div>
+          </div>
+      
+          <!-- 振动幅值 -->
+          <div class="chart-card">
+            <h3>振动幅值</h3>
+            <div id="vibration" class="chart-box"></div>
+          </div>
+        </div>
+      </section>
+    
+    <section class="section">
+      <h2 class="section-title">
+        <img src="../assets/icon02.jpg" alt="算力资源图标" class="section-icon">
+        算力资源监控
+      </h2>
+
+      <div class="chart-grid">
+        <div class="chart-card">
+          <h3>CPU 使用率（多核）</h3>
+          <div id="cpuUsage" class="chart-box"></div>
+        </div>
+
+        <div class="chart-card">
+          <h3>GPU 使用率 / 显存占用</h3>
+          <div id="gpuUsage" class="chart-box"></div>
+        </div>
+
+        <div class="chart-card">
+          <h3>内存占用</h3>
+          <div id="memoryGauge" class="chart-box"></div>
+        </div>
+
+        <div class="chart-card">
+          <h3>IO 速率</h3>
+          <div id="ioSpeed" class="chart-box"></div>
+        </div>
+      </div>
+    </section>
+    <!-- 可在此追加其他模块 -->
+
+    <section class="section">
+        <h2 class="section-title">
+          <img src="../assets/icon02.jpg" alt="网络监控图标" class="section-icon">
+          通信网络监控
+        </h2>
+  
+        <div class="chart-grid">
+          <!-- 网络延迟 -->
+          <div class="chart-card">
+            <h3>网络延迟</h3>
+            <div id="networkLatency" class="chart-box"></div>
+          </div>
+  
+          <!-- 丢包率 -->
+          <div class="chart-card">
+            <h3>丢包率</h3>
+            <div id="packetLoss" class="chart-box"></div>
+          </div>
+  
+          <!-- M2M 状态 -->
+          <div class="chart-card">
+            <h3>M2M 状态</h3>
+            <div id="m2mStatus" class="chart-box"></div>
+          </div>
+  
+          <!-- 远程连接状态 -->
+          <div class="chart-card">
+            <h3>远程连接状态</h3>
+            <div id="remoteStatus" class="chart-box"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 异常检测与分析模块 -->
+<section class="section">
+    <h2 class="section-title">
+      <img src="../assets/icon02.jpg" alt="异常图标" class="section-icon">
+      异常检测与分析
+    </h2>
+  
+    <div class="chart-grid">
+      <!-- 异常打标时间轴 -->
+      <div class="chart-card">
+        <h3>异常事件时间轴</h3>
+        <div id="anomalyTimeline" class="chart-box"></div>
+      </div>
+  
+      <!-- 异常趋势图 -->
+      <div class="chart-card">
+        <h3>异常趋势分析</h3>
+        <div id="anomalyTrend" class="chart-box"></div>
+      </div>
+  
+      <!-- 健康评分仪表盘 -->
+      <div class="chart-card">
+        <h3>系统健康评分</h3>
+        <div id="healthScoreGauge" class="chart-box"></div>
+      </div>
+  
+      <!-- 异常详情展开文本区域 -->
+      <div class="chart-card">
+        <h3>异常详情分析</h3>
+        <pre class="text-panel">
+  时间：2025-09-26 14:30:22
+  模块：IMU姿态传感器
+  详情：检测到X轴持续偏移，建议复位并检查固定结构
+  风险等级：中
+        </pre>
+      </div>
+    </div>
+  </section>
+  
+  <!-- 系统功能性展示模块 -->
+  <section class="section">
+    <h2 class="section-title">
+      <img src="../assets/icon02.jpg" alt="功能图标" class="section-icon">
+      系统功能模块
+    </h2>
+  
+    <div class="tool-panel-grid">
+      <!-- 机器切换卡片 -->
+      <div class="tool-card">
+        <h3>机器视图切换</h3>
+        <p>点击选择不同机器查看其状态：</p>
+        <select>
+          <option>Robot-A</option>
+          <option>Robot-B</option>
+          <option>Robot-C</option>
+        </select>
+      </div>
+  
+      <!-- 阈值配置 -->
+      <div class="tool-card">
+        <h3>阈值设置</h3>
+        <table class="threshold-table">
+          <thead><tr><th>指标</th><th>上限</th><th>下限</th></tr></thead>
+          <tbody>
+            <tr><td>帧率</td><td><input type="number" value="30"></td><td><input type="number" value="15"></td></tr>
+            <tr><td>温度</td><td><input type="number" value="75"></td><td><input type="number" value="30"></td></tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <!-- 导出报告 -->
+      <div class="tool-card">
+        <h3>报告导出</h3>
+        <p>点击按钮导出当前分析结果：</p>
+        <button onclick="alert('已成功导出 PDF')">导出 PDF</button>
+      </div>
+  
+      <!-- 实时告警 -->
+      <div class="tool-card">
+        <h3>实时告警配置</h3>
+        <p>Webhook 通知地址：</p>
+        <input type="text" value="https://example.com/webhook" style="width: 100%">
+        <button onclick="alert('Webhook 配置保存成功')">保存设置</button>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <script>
+    function generateSeriesData(count, min, max) {
+      return Array.from({ length: count }, () => (Math.random() * (max - min) + min).toFixed(2));
+    }
+
+    window.onload = function () {
+      // 摄像头帧率
+      echarts.init(document.getElementById('cameraFPS')).setOption({
+        xAxis: { type: 'category', data: ['1s','2s','3s','4s','5s'] },
+        yAxis: { type: 'value' },
+        series: [{ data: [30, 28, 15, 32, 29], type: 'line', markLine: { data: [{ yAxis: 20 }] } }]
+      });
+
+      // 花屏状态
+      document.getElementById('screenError').innerText = '状态正常';
+
+      // 关节压力
+      echarts.init(document.getElementById('jointPressure')).setOption({
+        xAxis: { type: 'category', data: ['关节1', '关节2', '关节3'] },
+        yAxis: { type: 'value' },
+        series: [{ type: 'bar', data: generateSeriesData(3, 30, 80) }]
+      });
+
+      // IMU 姿态角
+      echarts.init(document.getElementById('imuPose')).setOption({
+        xAxis: { type: 'category', data: ['Pitch', 'Roll', 'Yaw'] },
+        yAxis: { type: 'value' },
+        series: [{ type: 'bar', data: generateSeriesData(3, -45, 45) }]
+      });
+
+      // 电流电压
+      echarts.init(document.getElementById('currentVoltage')).setOption({
+        legend: { data: ['电流', '电压'] },
+        xAxis: { type: 'category', data: ['1s','2s','3s','4s','5s'] },
+        yAxis: { type: 'value' },
+        series: [
+          { name: '电流', type: 'line', data: generateSeriesData(5, 2, 5) },
+          { name: '电压', type: 'line', data: generateSeriesData(5, 12, 15) }
+        ]
+      });
+
+      // 电机温度
+      echarts.init(document.getElementById('motorTemp')).setOption({
+        xAxis: { type: 'category', data: ['电机1', '电机2', '电机3'] },
+        yAxis: { type: 'value' },
+        series: [{ type: 'bar', data: generateSeriesData(3, 40, 80), color: '#e67e22' }]
+      });
+
+      // 振动幅值
+      echarts.init(document.getElementById('vibration')).setOption({
+        xAxis: { type: 'category', data: ['X轴', 'Y轴', 'Z轴'] },
+        yAxis: { type: 'value' },
+        series: [{ type: 'line', data: generateSeriesData(3, 0.1, 1.2) }]
+      });
+
+      // CPU
+      echarts.init(document.getElementById('cpuUsage')).setOption({
+        xAxis: { type: 'category', data: ['核1','核2','核3','核4','核5','核6','核7','核8'] },
+        yAxis: { type: 'value' },
+        series: [{ type: 'bar', data: generateSeriesData(8, 10, 90), itemStyle: { color: '#3fa7f4' } }]
+      });
+
+      // GPU
+      echarts.init(document.getElementById('gpuUsage')).setOption({
+        legend: { data: ['GPU 使用率', '显存占用'] },
+        xAxis: { type: 'category', data: ['1s','2s','3s','4s','5s','6s','7s','8s','9s','10s'] },
+        yAxis: { type: 'value' },
+        series: [
+          { name: 'GPU 使用率', type: 'line', data: generateSeriesData(10, 20, 95) },
+          { name: '显存占用', type: 'line', data: generateSeriesData(10, 2000, 12000) }
+        ]
+      });
+
+      // 内存仪表盘
+      echarts.init(document.getElementById('memoryGauge')).setOption({
+        series: [{
+          type: 'gauge',
+          progress: { show: true, width: 18 },
+          axisLine: { lineStyle: { width: 18 } },
+          detail: { valueAnimation: true, formatter: '{value}%', fontSize: 18 },
+          data: [{ value: (Math.random() * 100).toFixed(1), name: '使用率' }]
+        }]
+      });
+
+      // IO 速率
+      echarts.init(document.getElementById('ioSpeed')).setOption({
+        xAxis: { type: 'category', data: ['1s','2s','3s','4s','5s','6s','7s','8s','9s','10s'] },
+        yAxis: { type: 'value' },
+        series: [{ type: 'line', data: generateSeriesData(10, 50, 300), areaStyle: {} }]
+      });
+
+      // 网络延迟
+      echarts.init(document.getElementById('networkLatency')).setOption({
+        xAxis: { type: 'category', data: ['1s','2s','3s','4s','5s','6s'] },
+        yAxis: { type: 'value' },
+        series: [{
+          data: [12, 14, 18, 22, 13, 11],
+          type: 'line',
+          markLine: {
+            data: [{ yAxis: 15 }],
+            lineStyle: { color: 'red', type: 'dashed' },
+            label: { formatter: '阈值 15ms' }
+          }
+        }]
+      });
+
+      // 丢包率
+      echarts.init(document.getElementById('packetLoss')).setOption({
+        xAxis: { type: 'category', data: ['1s','2s','3s','4s','5s'] },
+        yAxis: { type: 'value' },
+        series: [{ type: 'line', data: [0.1, 0.3, 0.2, 0.6, 0.4], smooth: true }]
+      });
+
+      // M2M
+      echarts.init(document.getElementById('m2mStatus')).setOption({
+        series: [{
+          type: 'gauge',
+          min: 0,
+          max: 1,
+          splitNumber: 1,
+          data: [{ value: 1, name: '通信正常' }],
+          axisLine: { lineStyle: { width: 20, color: [[1, '#67e0e3']] } },
+          pointer: { show: false },
+          detail: { fontSize: 18 }
+        }]
+      });
+
+      // 远程连接
+      echarts.init(document.getElementById('remoteStatus')).setOption({
+        series: [{
+          type: 'gauge',
+          min: 0,
+          max: 1,
+          splitNumber: 1,
+          data: [{ value: 0, name: '已断线' }],
+          axisLine: { lineStyle: { width: 20, color: [[1, '#f56c6c']] } },
+          pointer: { show: false },
+          detail: { fontSize: 18 }
+        }]
+      });
+
+      // 异常时间轴
+      echarts.init(document.getElementById('anomalyTimeline')).setOption({
+        xAxis: { type: 'category', data: ['14:00','14:10','14:20','14:30'] },
+        yAxis: { type: 'value' },
+        series: [{ type: 'scatter', data: [0, 1, 0, 1], symbolSize: 15 }]
+      });
+
+      // 异常趋势
+      echarts.init(document.getElementById('anomalyTrend')).setOption({
+        xAxis: { type: 'category', data: ['Mon','Tue','Wed','Thu','Fri'] },
+        yAxis: { type: 'value' },
+        series: [{ type: 'line', data: generateSeriesData(5, 0, 5) }]
+      });
+
+      // 健康评分
+      echarts.init(document.getElementById('healthScoreGauge')).setOption({
+        series: [{
+          type: 'gauge',
+          progress: { show: true },
+          detail: { valueAnimation: true, formatter: '{value} 分' },
+          data: [{ value: 85, name: '评分' }]
+        }]
+      });
+    };
+  </script>
+</body>
+
+</html>
