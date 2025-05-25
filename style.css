@@ -1,0 +1,216 @@
+/* 字体与基础设置 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9fbfc;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+/* 头部样式 */
+header {
+  background: linear-gradient(90deg, #0f172a, #13171d);
+  color: #ffffff;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.logo {
+  height: 60px;
+  width: auto;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 0.25rem 0;
+  font-weight: 600;
+}
+
+p {
+  margin: 0;
+  font-size: 1rem;
+  color: #e5e7eb;
+}
+
+/* 内容区设置 */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+  color: #1e293b;
+  font-weight: 700;
+}
+
+.section-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+/* 卡片容器 */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+/* 卡片样式 */
+.card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  flex: 1 1 320px;
+  max-width: 360px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.card h3 {
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #4b5563;
+  margin-bottom: 1rem;
+}
+
+/* 链接按钮 */
+.link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.link-row a {
+    text-decoration: none;
+    color: #374151; /* 深灰文字 */
+    background-color: #e5e7eb; /* 浅灰背景 */
+    font-weight: 500;
+    padding: 0.5rem 0.9rem;
+    border-radius: 0.5rem;
+    font-size: 0.85rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .link-row a:hover {
+    background-color: #d1d5db; /* hover 时略深灰 */
+  }
+  
+
+/* 卡片悬浮预览气泡 */
+.preview-bubble {
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  transform-origin: bottom center;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+  padding: 0.5rem;
+  width: 300px;
+}
+
+.preview-bubble img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+.card:hover .preview-bubble {
+  opacity: 1;
+}
+
+/* 子模块 */
+.subproject {
+  margin-top: 1rem;
+}
+
+.subproject h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+/* 页脚 */
+footer {
+  background: #f1f5f9;
+  padding: 2rem 1rem;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .card {
+    max-width: 100%;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+}
+
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  .chart-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .chart-box {
+    width: 100%;
+    height: 280px;
+  }
+  
+  
